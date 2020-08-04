@@ -1,12 +1,12 @@
 
 function main() {
-    console.log("hello world")
-    
-    //the form submission portion
-    $("form").submit(event => {
-        //prevents reloading of page (old behavior of html)
-        event.preventDefault()
-    
+  //console.log("hello world")
+
+  //the form submission portion
+  $("form").submit(event => {
+    //prevents reloading of page (old behavior of html)
+    event.preventDefault()
+
     //find input
     const value = $("#shopping-list-entry").val()
     console.log(value)
@@ -25,12 +25,22 @@ function main() {
         </div>
       </li>
     `)
-    })
+  })
 
-    // Next add portion to cross items off list
+  // Function to cross items off list
+  $("body").on ("click", ".shopping-item-toggle", function(event) {
+    //console.log("Strike test")
+    //$(this).parent().parent().find(".shopping-item").remove(); delete test
+    $(this).parent().parent().find(".shopping-item").toggleClass("shopping-item__checked");
+  })
 
-    // Last add portion to delete items
 
+
+  // Last add portion to delete items
+  $("body").on ("click", ".shopping-item-delete", function(event) {
+    //console.log("Delete test")
+    $(this).parent().parent().remove();
+  })
 
 }
 
